@@ -1,6 +1,7 @@
 package com.noom.interview.fullstack.sleep.dto.request;
 
 import com.noom.interview.fullstack.sleep.model.Mood;
+import com.noom.interview.fullstack.sleep.validation.ValidDateRange;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,6 +13,7 @@ import java.time.LocalDate;
 
 @Getter
 @Setter
+@ValidDateRange
 public class SleepLogCreateRequest {
 
     @NotNull
