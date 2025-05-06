@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.jdbc.Sql;
 
 import java.util.Optional;
 
@@ -14,6 +15,7 @@ import static com.noom.interview.fullstack.sleep.util.UserUtil.TEST_USER_USERNAM
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
+@Sql(scripts = "/schema.sql")
 @ActiveProfiles(SleepApplication.UNIT_TEST_PROFILE)
 public class UserRepositoryTest {
 
