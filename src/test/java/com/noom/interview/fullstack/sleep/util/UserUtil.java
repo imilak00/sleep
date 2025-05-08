@@ -7,12 +7,12 @@ import java.util.List;
 
 public class UserUtil {
 
-    public static final long TEST_USER_ID = 1L;
-    public static final String TEST_USER_USERNAME = "John123";
+    public static final long TEST_ID = 1L;
+    public static final String TEST_USERNAME = "John123";
 
     public static User generateUserStub() {
 
-        return new User(TEST_USER_ID, TEST_USER_USERNAME, "john@example.com", "pwd123", List.of(new SleepLog()));
+        return new User(TEST_ID, TEST_USERNAME, "john@example.com", "pwd123", List.of(new SleepLog()));
     }
 
 }

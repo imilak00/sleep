@@ -26,17 +26,17 @@ class UserServiceTest {
     @Test
     public void shouldReturnUserWhenFound() {
         User user = generateUserStub();
-        when(userRepository.findById(TEST_USER_ID)).thenReturn(Optional.of(user));
+        when(userRepository.findById(TEST_ID)).thenReturn(Optional.of(user));
 
-        User result = userService.getById(TEST_USER_ID);
+        User result = userService.getById(TEST_ID);
 
-        assertThat(result.getUsername()).isEqualTo(TEST_USER_USERNAME);
+        assertThat(result.getUsername()).isEqualTo(TEST_USERNAME);
     }
 
     @Test
     public void shouldThrowWhenUserNotFound() {
-        when(userRepository.findById(TEST_USER_ID)).thenReturn(Optional.empty());
+        when(userRepository.findById(TEST_ID)).thenReturn(Optional.empty());
 
-        assertThrows(EntityNotFoundException.class, () -> userService.getById(TEST_USER_ID));
+        assertThrows(EntityNotFoundException.class, () -> userService.getById(TEST_ID));
     }
 }
