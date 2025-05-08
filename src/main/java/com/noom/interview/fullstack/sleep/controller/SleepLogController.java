@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.ValidationException;
 import java.time.LocalDate;
 
 @RestController
@@ -36,6 +37,10 @@ public class SleepLogController {
     public ResponseEntity<SleepLogAverages> getAverages(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dateFrom,
                                                         @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dateTo,
                                                         @RequestParam Long userId) {
+        if (dateFrom.equals(dateTo)) {
+            throw new ValidationException("startDate cannot be the same value as the endDate.");
+        }
+
         SleepLogAverages response = sleepLogService.getAverages(dateFrom, dateTo, userId);
 
         return ResponseEntity.ok(response);

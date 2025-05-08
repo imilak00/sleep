@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import javax.persistence.EntityExistsException;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.NoResultException;
+import javax.xml.bind.ValidationException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,6 +32,11 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(NoResultException.class)
     public ResponseEntity<String> handleNoResultException(NoResultException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(ValidationException.class)
+    public ResponseEntity<String> handleValidationException(ValidationException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
