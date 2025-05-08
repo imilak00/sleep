@@ -2,7 +2,7 @@ package com.noom.interview.fullstack.sleep.mapper;
 
 import com.noom.interview.fullstack.sleep.dto.response.SleepLogResponse;
 import com.noom.interview.fullstack.sleep.model.SleepLog;
-import com.noom.interview.fullstack.sleep.util.DurationUtil;
+import com.noom.interview.fullstack.sleep.util.TimeFormatter;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -15,7 +15,7 @@ public class SleepLogToSleepLogResponseMapper implements ObjectMapper<SleepLog, 
         destination.setDate(source.getLogDate());
         destination.setStartTime(source.getStartTime());
         destination.setEndTime(source.getEndTime());
-        destination.setDuration(DurationUtil.formatDuration(source.getDurationMinutes()));
+        destination.setDuration(TimeFormatter.formatTime(source.getDurationMinutes()));
         destination.setMood(source.getMood());
         destination.setTimezone(source.getTimezone());
 
