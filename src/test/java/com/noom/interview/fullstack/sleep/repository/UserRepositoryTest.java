@@ -6,16 +6,13 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.jdbc.Sql;
 
 import java.util.Optional;
 
-import static com.noom.interview.fullstack.sleep.util.UserUtil.TEST_USER_ID;
-import static com.noom.interview.fullstack.sleep.util.UserUtil.TEST_USER_USERNAME;
+import static com.noom.interview.fullstack.sleep.util.UserUtil.TEST_ID;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
-@Sql(scripts = "/schema.sql")
 @ActiveProfiles(SleepApplication.UNIT_TEST_PROFILE)
 public class UserRepositoryTest {
 
@@ -24,10 +21,10 @@ public class UserRepositoryTest {
 
     @Test
     void shouldFindUserById() {
-        Optional<User> user = userRepository.findById(TEST_USER_ID);
+        Optional<User> returnedUser = userRepository.findById(TEST_ID);
 
-        assertThat(user).isPresent();
-        assertThat(user.get().getUsername()).isEqualTo(TEST_USER_USERNAME);
+        assertThat(returnedUser).isPresent();
+        assertThat(returnedUser.get().getUsername()).isEqualTo("alice123");
     }
 
 }

@@ -1,11 +1,22 @@
+DROP TABLE IF EXISTS sleep_logs;
 DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
-    id BIGINT PRIMARY KEY,
+    id BIGINT AUTO_INCREMENT  PRIMARY KEY,
     username VARCHAR(255) NOT NULL UNIQUE,
     email VARCHAR(255) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL
 );
 
-INSERT INTO users (id, username, email, password)
-VALUES (1, 'John123', 'alice@example.com', '$2a$12$jAzbWu7okyBEwMH7JuMRKuHNMSPLNDyuhUkyN4pC/JA2vI9Lgpka.');
+CREATE TABLE public.sleep_logs (
+   id BIGINT AUTO_INCREMENT  PRIMARY KEY,
+   log_date date NULL,
+   start_time timestamp,
+   end_time timestamp,
+   duration_minutes int4,
+   mood varchar(25),
+   user_id int4 NOT NULL,
+   timezone varchar(50),
+   CONSTRAINT sleep_logs_pkey PRIMARY KEY (id),
+   CONSTRAINT fk_sleep_logs_users FOREIGN KEY (user_id) REFERENCES users(id)
+);
