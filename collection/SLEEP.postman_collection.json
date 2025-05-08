@@ -1,0 +1,368 @@
+{
+	"info": {
+		"_postman_id": "89213e80-d6c1-4ff0-995c-f0a39f9f170a",
+		"name": "SLEEP",
+		"description": "This is a collection for testing the Sleep application. It includes api calls for the User endpoint and the SleepLog endpoint.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17138106",
+		"_collection_link": "https://solar-satellite-584301.postman.co/workspace/c70f28f9-1def-4a17-8d57-0899927f8a93/collection/17138106-89213e80-d6c1-4ff0-995c-f0a39f9f170a?action=share&source=collection_link&creator=17138106"
+	},
+	"item": [
+		{
+			"name": "SleepLog",
+			"item": [
+				{
+					"name": "CREATE",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"1\",\r\n    \"logDate\": \"2025-05-04\",\r\n    \"startTime\": \"2025-05-03T23:00:00z\",\r\n    \"endTime\": \"2025-05-04T07:00:00z\",\r\n    \"mood\": \"OK\",\r\n    \"timezone\": \"Europe/Zagreb\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/sleep/sleep-log",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"sleep",
+								"sleep-log"
+							]
+						},
+						"description": "Creates a new sleep log entry. Returns an error message if an entry already exists with the same logDate."
+					},
+					"response": [
+						{
+							"name": "CREATE SLEEP LOG response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"userId\": \"1\",\r\n    \"logDate\": \"2025-05-04\",\r\n    \"startTime\": \"2025-05-03T23:00:00z\",\r\n    \"endTime\": \"2025-05-04T07:00:00z\",\r\n    \"mood\": \"OK\",\r\n    \"timezone\": \"Europe/Zagreb\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/sleep/sleep-log",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"sleep",
+										"sleep-log"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 08 May 2025 21:11:26 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"date\": \"2025-05-04\",\n    \"startTime\": \"2025-05-03T23:00:00Z\",\n    \"endTime\": \"2025-05-04T07:00:00Z\",\n    \"mood\": \"OK\",\n    \"timezone\": \"Europe/Zagreb\",\n    \"duration\": \"08:00:00\"\n}"
+						}
+					]
+				},
+				{
+					"name": "GET BY USER ID AND LOG DATE",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/sleep/sleep-log?userId=1&logDate=2025-05-04",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"sleep",
+								"sleep-log"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "1"
+								},
+								{
+									"key": "logDate",
+									"value": "2025-05-04"
+								}
+							]
+						},
+						"description": "Retrieves a sleep log by user id and log date. If no such log exists, an error message is returned."
+					},
+					"response": [
+						{
+							"name": "GET BY USER ID AND LOG DATE response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/sleep/sleep-log?userId=1&logDate=2025-05-04",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"sleep",
+										"sleep-log"
+									],
+									"query": [
+										{
+											"key": "userId",
+											"value": "1"
+										},
+										{
+											"key": "logDate",
+											"value": "2025-05-04"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 08 May 2025 20:54:39 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"date\": \"2025-05-04\",\n    \"startTime\": \"2025-05-03T23:00:00Z\",\n    \"endTime\": \"2025-05-04T14:00:00Z\",\n    \"mood\": \"OK\",\n    \"timezone\": \"Europe/Zagreb\",\n    \"duration\": \"15:00:00\"\n}"
+						}
+					]
+				},
+				{
+					"name": "GET SLEEP AVERAGES BY USER ID AND DATE RANGE",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/sleep/sleep-log/averages?userId=1&dateFrom=2025-05-03&dateTo=2025-05-04",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"sleep",
+								"sleep-log",
+								"averages"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "1"
+								},
+								{
+									"key": "dateFrom",
+									"value": "2025-05-03"
+								},
+								{
+									"key": "dateTo",
+									"value": "2025-05-04"
+								}
+							]
+						},
+						"description": "Retrieves sleep log averages by user id for a given date range. Returns an error message if no entries exist for a given date range."
+					},
+					"response": [
+						{
+							"name": "GET SLEEP AVERAGES BY USER ID AND DATE RANGE response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/sleep/sleep-log/averages?userId=1&dateFrom=2025-05-03&dateTo=2025-05-04",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"sleep",
+										"sleep-log",
+										"averages"
+									],
+									"query": [
+										{
+											"key": "userId",
+											"value": "1"
+										},
+										{
+											"key": "dateFrom",
+											"value": "2025-05-03"
+										},
+										{
+											"key": "dateTo",
+											"value": "2025-05-04"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 08 May 2025 21:06:06 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"dateFrom\": \"2025-05-03\",\n    \"dateTo\": \"2025-05-04\",\n    \"averageStartTime\": \"23:00:00\",\n    \"averageEndTime\": \"14:00:00\",\n    \"averageDuration\": \"15:00:00\",\n    \"moodFrequencies\": [\n        {\n            \"mood\": \"OK\",\n            \"frequency\": 2\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "GET USER BY ID",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/sleep/users/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"sleep",
+								"users",
+								"1"
+							]
+						},
+						"description": "Gets user by id. There are 3 test users (ids 1 through 3). Returns an error if no user is found."
+					},
+					"response": [
+						{
+							"name": "response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/sleep/users/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"sleep",
+										"users",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 08 May 2025 21:03:56 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"username\": \"alice\",\n    \"email\": \"alice@example.com\"\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
